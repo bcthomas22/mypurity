@@ -1,0 +1,62 @@
+.questions {
+    margin: auto;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    max-width: 600px;
+    border-radius: 20px;
+    border: 1px solid #000;
+    padding: 20px;
+}
+
+.questionnaire-text {
+    text-align: center;
+    color: teal;
+    font-size: 2em;
+    padding: 10px;
+    font-weight: 700;
+}
+
+.questionnaire-prompt {
+    text-align: center;
+    color: #000;
+    font-size: 1em;
+    padding: 10px;
+    font-weight: 100;
+}
+
+.question-box {
+    border: 1px solid teal;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.question-text {
+    font-weight: 500;
+}
+
+.question-slider {
+    width: 100%;
+    margin: 10px 0 10px 0;
+    
+}
+
+.question-input-amount {
+    font-weight: 700;
+    font-size: 1.25em;
+}
+
+.submit-questionnaire {
+    width: auto;
+    margin: auto;
+    margin-top: 10px;
+    background-color: teal;
+    border: none;
+    border-radius: 10px;
+    height: auto;
+    padding: 12px 20px;
+    font-weight: 700;
+}
