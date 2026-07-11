@@ -1,4 +1,4 @@
-import {type MainRank, type Rank} from "./Ranks";
+import { type Rank} from "./Ranks";
 import { useState, type ChangeEvent } from 'react';
 import './styling/questionnaire.css'
 

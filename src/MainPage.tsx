@@ -5,7 +5,6 @@ import { useState } from "react"
 import { type DatePurityPair } from "./Log"
 import { isSameDay } from "date-fns"
 import { Ranking } from "./Ranking"
-import { type Rank } from "./Ranks"
 
 export function MainPage() {
 

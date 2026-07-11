@@ -1,4 +1,4 @@
-import { useState, useEffect, type Dispatch, type SetStateAction } from "react"
+import { useState } from "react"
 import { Questionnaire } from "./Questionnaire"
 import { type Rank } from "./Ranks";
 import { MainPage } from "./MainPage";

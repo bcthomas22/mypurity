@@ -1,5 +1,3 @@
-import { previousFriday } from "date-fns"
-
 export type MainRank =
     | "Purity"
     | "Soil"
