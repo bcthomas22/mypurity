@@ -89,49 +89,35 @@ export function Questionnaire(props: QuestionnaireProps) {
         },
     ]
 
-    const getRankFromQuestions = (submission: QuestionnaireState): MainRank => {
-        if (submission.unspoken > 0){
-            return "rank1"
-        }
+    const getRankFromQuestions = (submission: QuestionnaireState): Rank => {
 
-        const m_perDayOld = submission.m_month / 30;
-        const m_perDayNew = submission.m_week / 7;
-        const wp_perDayOld = submission.wp_month / 30;
-        const wp_perDayNew = submission.wp_week / 7;
-        const hs_perDayOld = submission.hs_month / 30;
-        const hs_perDayNew = submission.hs_week / 7;
+        let totalPoints = 0;
+        totalPoints += submission.unspoken * 300
+        totalPoints += submission.hs_week * 30
+        totalPoints += submission.hs_month * 25
+        totalPoints += submission.wp_week * 25
+        totalPoints += submission.wp_month * 22
+        totalPoints += submission.m_week * 20
+        totalPoints += submission.m_month * 18
 
-        const m_growth = m_perDayOld - m_perDayNew;
-        const wp_growth = wp_perDayOld - wp_perDayNew;
-        const hs_growth = hs_perDayOld - hs_perDayNew;
+        if (totalPoints >= 300)
+            return {mainRank: "Purity", subRank: null, fruits: null, progress: 100}
 
-        if (hs_perDayNew + hs_perDayOld - (hs_growth/2) > 0.8)
-            return "rank2"
+        if (totalPoints >= 200)
+            return {mainRank: "Soil", subRank: "Mature", fruits: null, progress: 100}
 
-        if (hs_perDayNew + hs_perDayOld - (hs_growth/2) > 0)
-            return "rank3"
+        if (totalPoints >= 100)
+            return {mainRank: "Seed", subRank: "Mature", fruits: null, progress: 100}
 
-        if (wp_perDayNew + wp_perDayOld - (wp_growth/2) > 0.8)
-            return "rank4"
+        if (totalPoints >= 50)
+            return {mainRank: "Root", subRank: "Mature", fruits: null, progress: 100}
 
-        if (wp_perDayNew + wp_perDayOld - (wp_growth/2) > 0)
-            return "rank5"
-
-        if (m_perDayNew + m_perDayOld - (m_growth/2) > 1)
-            return "rank6"
-
-        if (m_perDayNew + m_perDayOld - (m_growth/2) > 0.6)
-            return "rank7"
-
-        if (m_perDayNew + m_perDayOld - (m_growth/2) > 0)
-            return "rank8"
-
-        return "rank9"
+        return {mainRank: "Sprout", subRank: "Mature", fruits: null, progress: 100}
     }
 
     const submit = () => {
         const myRank = getRankFromQuestions(state)
-        props.setRank({mainRank: myRank, subRank: "sub-rank2"})
+        props.setRank(myRank)
     }
 
     return (

@@ -1,0 +1,55 @@
+.boxes-container {
+    margin: auto;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    max-width: 600px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+
+.box {
+    border: 1px solid #81cdc5;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px;
+    text-align: center;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.yesterdays-color {
+    border: 1px solid #ddd;
+    background-color: #81cdc5;
+    min-width: 200px;
+    min-height: 200px;
+    padding: 15px;
+    border-radius: 30px;
+    margin: 10px;
+    align-self: center;
+}
+
+.log-button {
+    background-color: #81cdc5;
+    font-weight: 600;
+    font-size: 0.9em;
+    color: white;
+    width: 125px;
+    height: 50px;
+    border: none;
+    margin: 15px;
+    border-radius: 30px;
+}
+
+.log-button:hover {
+    background-color: #71b2ab;
+}
+
+.log-button:active {
+    background-color: #609e98;
+}
