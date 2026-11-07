@@ -12,11 +12,11 @@ export type PureSubLog =
 
 export type FallenSubLog =
     | null
-    | "Mast......"
-    | "Lew. Ima..."
-    | "Wat.... Po.."
-    | "Ha. Se."
-    | "Something Unspeakable"
+    | "I"
+    | "II"
+    | "III"
+    | "IV"
+    | "V"
 
 export type Log = {
     mainLog: MainLog,
@@ -26,5 +26,10 @@ export type Log = {
 
 export type DatePurityPair = {
     date: Date
-    log: Log
+    log: Log | null
+}
+
+export type LoggingPageSet = {
+    date: Date,
+    multiplier: number
 }

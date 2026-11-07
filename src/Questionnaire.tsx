@@ -7,25 +7,15 @@ type QuestionnaireProps = {
 }
 
 type QuestionnaireState = {
-    m_month: number
-    m_week: number
-    wp_month: number
-    wp_week: number
-    hs_month: number
-    hs_week: number
-    unspoken: number
+    rate_month: number
+    rate_week: number
 }
 
 export function Questionnaire(props: QuestionnaireProps) {
 
     const initState: QuestionnaireState = {
-        m_month: 0,
-        m_week: 0,
-        wp_month: 0,
-        wp_week: 0,
-        hs_month: 0,
-        hs_week: 0,
-        unspoken: 0
+        rate_month: 1,
+        rate_week: 1
     }
 
     const [state, setState] = useState<QuestionnaireState>(initState)
@@ -39,80 +29,40 @@ export function Questionnaire(props: QuestionnaireProps) {
     }
     const allQuestions: MappedQuestion[] = [
         {
-            question: "How many times have you [m] in the last month? Approximate",
-            min: 0,
-            max: 30,
-            current: state.m_month,
-            change: (n) => setState({...state, m_month: n})
+            question: "On your scale, rate how your purity has been in the last MONTH (1 bad, 10 good)",
+            min: 1,
+            max: 10,
+            current: state.rate_month,
+            change: (n) => setState({...state, rate_month: n})
         },
         {
-            question: "How many times have you [m] in the last week? Approximate",
-            min: 0,
-            max: 7,
-            current: state.m_week,
-            change: (n) => setState({...state, m_week: n})
-        },
-        {
-            question: "How many times have you [wp] in the last month? Approximate",
-            min: 0,
-            max: 30,
-            current: state.wp_month,
-            change: (n) => setState({...state, wp_month: n})
-        },
-        {
-            question: "How many times have you [wp] in the last week? Approximate",
-            min: 0,
-            max: 7,
-            current: state.wp_week,
-            change: (n) => setState({...state, wp_week: n})
-        },
-        {
-            question: "How many times have you [hs] in the last month? Approximate",
-            min: 0,
-            max: 30,
-            current: state.hs_month,
-            change: (n) => setState({...state, hs_month: n})
-        },
-        {
-            question: "How many times have you [hs] in the last week? Approximate",
-            min: 0,
-            max: 7,
-            current: state.hs_week,
-            change: (n) => setState({...state, hs_week: n})
-        },
-        {
-            question: "How many times have you done something completely worse in the past month (Something horrible).",
-            min: 0,
-            max: 1,
-            current: state.unspoken,
-            change: (n) => setState({...state, unspoken: n})
-        },
+            question: "On your scale, rate how your purity has been in the last WEEK (1 bad, 10 good)",
+            min: 1,
+            max: 10,
+            current: state.rate_week,
+            change: (n) => setState({...state, rate_week: n})
+        }
     ]
 
     const getRankFromQuestions = (submission: QuestionnaireState): Rank => {
 
         let totalPoints = 0;
-        totalPoints += submission.unspoken * 300
-        totalPoints += submission.hs_week * 30
-        totalPoints += submission.hs_month * 25
-        totalPoints += submission.wp_week * 25
-        totalPoints += submission.wp_month * 22
-        totalPoints += submission.m_week * 20
-        totalPoints += submission.m_month * 18
-
-        if (totalPoints >= 300)
-            return {mainRank: "Purity", subRank: null, fruits: null, progress: 100}
-
-        if (totalPoints >= 200)
-            return {mainRank: "Soil", subRank: "Mature", fruits: null, progress: 100}
+        totalPoints += submission.rate_month * 3
+        totalPoints += submission.rate_week * 7
 
         if (totalPoints >= 100)
-            return {mainRank: "Seed", subRank: "Mature", fruits: null, progress: 100}
+            return {mainRank: "Sprout", subRank: null, fruits: null, progress: 100}
 
-        if (totalPoints >= 50)
+        if (totalPoints >= 75)
             return {mainRank: "Root", subRank: "Mature", fruits: null, progress: 100}
 
-        return {mainRank: "Sprout", subRank: "Mature", fruits: null, progress: 100}
+        if (totalPoints >= 50)
+            return {mainRank: "Seed", subRank: "Mature", fruits: null, progress: 100}
+
+        if (totalPoints >= 25)
+            return {mainRank: "Soil", subRank: "Mature", fruits: null, progress: 100}
+
+        return {mainRank: "Purity", subRank: "Mature", fruits: null, progress: 100}
     }
 
     const submit = () => {
@@ -126,7 +76,7 @@ export function Questionnaire(props: QuestionnaireProps) {
                 Questionnaire
             </div>
             <div className="questionnaire-prompt">
-                Please indicate how "pure" you are by answering the following questions. Nothing answered here will be tracked or stored.
+                Please indicate your purity by answering the following questions. Nothing answered here will be tracked or stored.
             </div>
             {allQuestions.map((q, i) => 
                 <Question 
@@ -176,7 +126,7 @@ function Question(props: QuestionProps) {
                 </input>
             </div>
             <div className="question-input-amount">
-                {props.currentSliderValue + (props.currentSliderValue === props.maxSliderValue ? "+" : "") + " time" + (props.currentSliderValue === 1 ? "" : "s")}
+                {props.currentSliderValue}
             </div>
         </div>
     )
