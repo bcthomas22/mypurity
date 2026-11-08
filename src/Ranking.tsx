@@ -1,4 +1,4 @@
-import { useDeferredValue, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { type Rank, pointsNeededToRankUp, nextRank } from "./Ranks"
 
 export function Ranking() {
