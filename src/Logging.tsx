@@ -11,7 +11,7 @@ type YesterdaysLogProps = {
 
 export function YesterdaysLog(props: YesterdaysLogProps) {
 
-    let purityColor = "#000000"
+    let purityColor = "#aa6340"
 
     switch (props.log?.pureSubLog) {
         case "Minimal Temptation":
@@ -81,7 +81,7 @@ export function WeekLogs(props: WeekLogsProps) {
             <h2>Previous Week</h2>
             {props.logs.map((l, i) => {
 
-                let purityColor = "#000000"
+                let purityColor = "#aa6340"
 
                 switch (l.log?.pureSubLog) {
                     case "Minimal Temptation":
@@ -153,7 +153,7 @@ export function PrevLogs(props: PrevLogsProps) {
             <div className="prev-log-cont">
             {props.logs.map((l, i) => {
 
-                let purityColor = "#000000"
+                let purityColor = "#aa6340"
 
                 switch (l.log?.pureSubLog) {
                     case "Minimal Temptation":
