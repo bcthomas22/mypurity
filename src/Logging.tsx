@@ -245,7 +245,8 @@ export function LoggingPage(props: LoggingPageProps) {
             default: return "fallen";
         }})();
 
-        changeRank(expEarned);
+        if (props.set.multiplier !== 0)
+            changeRank(expEarned);
 
         props.return();
     }
