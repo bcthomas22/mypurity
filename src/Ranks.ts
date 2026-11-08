@@ -194,4 +194,7 @@ export function changeRank(amount: number | "fallen") {
     const newRank = getNewRank();
     localStorage.setItem("rank", JSON.stringify(newRank))
 
+    //keep track of old rank for animation purposes
+    localStorage.setItem("prev-rank", JSON.stringify(rankFromLocal))
+
 }
