@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ApiClient, BibleClient, YouVersionPlatformConfiguration  } from '@youversion/platform-core'
-import { useYVAuth, useHighlights } from '@youversion/platform-react-hooks'
+import { ApiClient, BibleClient  } from '@youversion/platform-core'
 
 const VERSION_ID = 3034;
 
@@ -13,12 +12,6 @@ const bibleClient = new BibleClient(apiClient)
 // Derived from the SDK itself, so these stay correct if its types change
 type VotdData = Awaited<ReturnType<BibleClient['getVOTD']>>
 
-// Local shape for a highlight. Field names are inferred, so verify with the console log
-interface HighlightItem {
-  passage_id: string
-  color?: string
-}
-
 // What the widget actually displays
 interface DisplayPassage {
   reference: string
@@ -30,22 +23,6 @@ function dayOfYear(): number {
   const start = Date.UTC(now.getFullYear(), 0, 0)
   const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate())
   return Math.round((today - start) / 86_400_000)
-}
-
-// Accepts either { data: [...] } or a plain array, and ignores anything malformed
-function toHighlightList(highlights: unknown): HighlightItem[] {
-  const raw: unknown = Array.isArray(highlights)
-    ? highlights
-    : (highlights as { data?: unknown } | null | undefined)?.data
-
-  if (!Array.isArray(raw)) return []
-
-  return raw.filter(
-    (h): h is HighlightItem =>
-      typeof h === 'object' &&
-      h !== null &&
-      typeof (h as HighlightItem).passage_id === 'string'
-  )
 }
 
 interface PassageTextProps {

@@ -7,7 +7,7 @@ export function Ranking() {
     const rankFromLocal: Rank = rankFromLocalSer === null ? null : JSON.parse(rankFromLocalSer);
 
     const oldRankFromLocalSer = localStorage.getItem("prev-rank");
-    const oldRankFromLocal: Rank = oldRankFromLocalSer === null ? null : JSON.parse(oldRankFromLocalSer);
+    const oldRankFromLocal: Rank = oldRankFromLocalSer === null ? rankFromLocal : JSON.parse(oldRankFromLocalSer);
 
     const rankedUp: boolean = nextRank(oldRankFromLocal.mainRank) === rankFromLocal.mainRank;
     const rankedDown: boolean = oldRankFromLocal.mainRank === nextRank(rankFromLocal.mainRank);
