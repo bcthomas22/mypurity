@@ -59,7 +59,7 @@ export function MainPage() {
                 <WeekLogs logs={weekLogs} onClick={(date)=>{setOnLogging({multiplier: 0.8, date: new Date(date)})}} />
             </Box>
             <Box>
-                <PrevLogs logs={prevLogs} onClick={(date)=>{setOnLogging({multiplier: 1, date: new Date(date)})}} onLoadMore={() => setLoadMoreCount(prev => prev + 50)} />
+                <PrevLogs logs={prevLogs} onClick={(date)=>{setOnLogging({multiplier: 0, date: new Date(date)})}} onLoadMore={() => setLoadMoreCount(prev => prev + 50)} />
             </Box>
         </div>
     )
