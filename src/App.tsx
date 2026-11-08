@@ -14,6 +14,8 @@ function App() {
     localStorage.setItem("rank", JSON.stringify(r))
   }
 
+  console.log('redirect URI:', `${window.location.origin}${import.meta.env.BASE_URL}`)
+
   return (
     <>
       {currentRank === null ? <Questionnaire setRank={setInitialRank} /> :

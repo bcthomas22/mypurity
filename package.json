@@ -11,6 +11,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@youversion/platform-core": "^3.0.0",
+    "@youversion/platform-react-hooks": "^3.0.0",
     "date-fns": "^4.4.0",
     "date-fns-tz": "^3.2.0",
     "react": "^19.2.7",

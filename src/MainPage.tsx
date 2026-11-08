@@ -5,6 +5,8 @@ import { useState } from "react"
 import { type DatePurityPair, type LoggingPageSet } from "./Log"
 import { isSameDay } from "date-fns"
 import { Ranking } from "./Ranking"
+import AuthButton from "./AuthButton"
+import VerseWidget from "./VerseWidget"
 
 export function MainPage() {
 
@@ -45,6 +47,7 @@ export function MainPage() {
             <Box>
                 <CurrentDate />
                 <p>Today is a brand new day! <br/> Jesus has forgiven all your sins!</p>
+                <VerseWidget />
             </Box>
             <Box>
                 <YesterdaysLog log={yestLog?.log ?? null} onClick={() => {
