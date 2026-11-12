@@ -53,26 +53,6 @@
     background-color: #609e98;
 }
 
-.week-log-button {
-    background-color: #81cdc5;
-    font-weight: 600;
-    font-size: 0.9em;
-    color: white;
-    width: 110px;
-    height: 50px;
-    border: none;
-    margin: 15px;
-    border-radius: 10px;
-}
-
-.week-log-button:hover {
-    background-color: #71b2ab;
-}
-
-.week-log-button:active {
-    background-color: #609e98;
-}
-
 .weekly-log {
     display: flex;
     align-items: center;
@@ -180,4 +160,9 @@
     background-color: #81cdc5;
     height: 100%;
     border-radius: 10px;
+}
+
+.read-in-bible {
+    color: white;
+    text-decoration: none;
 }

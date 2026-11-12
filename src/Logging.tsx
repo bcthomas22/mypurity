@@ -123,7 +123,7 @@ export function WeekLogs(props: WeekLogsProps) {
                 return (
                     <div key={i} className="weekly-log">
 
-                        {l.log === null ? <button className="week-log-button" onClick={() => props.onClick(date)}>Click to log</button> :
+                        {l.log === null ? <button className="log-button" onClick={() => props.onClick(date)}>Click to log</button> :
                         <div className="week-log-color" style={{ backgroundColor: purityColor}}></div>}
 
                         <div className="week-log-date">{date.toLocaleDateString('en-US', {

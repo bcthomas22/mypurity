@@ -33,3 +33,9 @@ export type LoggingPageSet = {
     date: Date,
     multiplier: number
 }
+
+export type VersesReadData = {
+    lastDateRead: Date,
+    currentStreak: number,
+    total: number
+}

@@ -134,8 +134,8 @@ export function changeRank(amount: number | "fallen") {
             if(rankFromLocal.subRank === "Decayed"){
                 return {
                     mainRank: prevRank(rankFromLocal.mainRank),
-                    subRank: prevRank(rankFromLocal.mainRank) === "Purity" ? null : "Mature",
-                    progress: 100,
+                    subRank: prevRank(rankFromLocal.mainRank) === "Purity" ? null : "Thriving",
+                    progress: pointsNeededToRankUp(prevRank(rankFromLocal.mainRank)) * 0.7,
                     fruits: null
                 }
             }
@@ -143,8 +143,8 @@ export function changeRank(amount: number | "fallen") {
             {
                 return {
                     mainRank: "Blossom",
-                    subRank: "Mature",
-                    progress: 100,
+                    subRank: "Florishing",
+                    progress: pointsNeededToRankUp("Blossom") * 0.5,
                     fruits: null
                 }
             }
